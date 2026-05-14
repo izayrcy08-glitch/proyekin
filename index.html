@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>PROYEKin - Platform Jasa & Kebutuhan Proyek</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#f7f7f7;
+  color:#111;
+}
+
+.container{
+  width:90%;
+  max-width:1200px;
+  margin:auto;
+}
+
+/* HEADER */
+
+header{
+  background:#fff;
+  border-bottom:1px solid #eee;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 0;
+}
+
+.logo{
+  font-size:32px;
+  font-weight:800;
+}
+
+.logo span{
+  color:#f97316;
+}
+
+.menu{
+  display:flex;
+  gap:30px;
+  align-items:center;
+}
+
+.menu a{
+  text-decoration:none;
+  color:#111;
+  font-weight:600;
+}
+
+.btn{
+  background:#f97316;
+  color:#fff;
+  padding:14px 24px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:700;
+  display:inline-block;
+  transition:0.3s;
+}
+
+.btn:hover{
+  opacity:0.9;
+}
+
+.btn-secondary{
+  background:#fff;
+  border:2px solid #ddd;
+  color:#111;
+}
+
+/* HERO */
+
+.hero{
+  padding:80px 0;
+  background:#fff;
+}
+
+.hero-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  align-items:center;
+}
+
+.hero h1{
+  font-size:58px;
+  line-height:1.1;
+  margin-bottom:24px;
+}
+
+.hero h1 span{
+  color:#f97316;
+}
+
+.hero p{
+  font-size:18px;
+  line-height:1.8;
+  color:#555;
+  margin-bottom:32px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.hero img{
+  width:100%;
+  border-radius:24px;
+}
+
+/* SECTION */
+
+section{
+  padding:80px 0;
+}
+
+.section-title{
+  text-align:center;
+  font-size:42px;
+  margin-bottom:50px;
+}
+
+/* CATEGORIES */
+
+.categories{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:#fff;
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.card h3{
+  margin-top:10px;
+}
+
+/* STEPS */
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+.step{
+  background:#fff;
+  padding:35px;
+  border-radius:20px;
+  text-align:center;
+}
+
+.step-number{
+  width:60px;
+  height:60px;
+  background:#f97316;
+  color:#fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:auto;
+  font-size:24px;
+  font-weight:800;
+  margin-bottom:20px;
+}
+
+/* VENDOR */
+
+.vendors{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+
+.vendor-card{
+  background:#fff;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.vendor-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.vendor-content{
+  padding:24px;
+}
+
+.vendor-content h3{
+  margin-bottom:10px;
+}
+
+.location{
+  color:#777;
+  margin-bottom:20px;
+}
+
+/* CTA */
+
+.cta{
+  background:#f97316;
+  padding:70px;
+  border-radius:30px;
+  color:#fff;
+  text-align:center;
+}
+
+.cta h2{
+  font-size:48px;
+  margin-bottom:20px;
+}
+
+.cta p{
+  margin-bottom:30px;
+  font-size:18px;
+}
+
+/* MITRA FORM */
+
+.mitra-section{
+  background:#fff;
+}
+
+.mitra-header{
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.mitra-header h2{
+  font-size:42px;
+  margin-bottom:20px;
+}
+
+.mitra-header p{
+  color:#666;
+  line-height:1.8;
+  font-size:18px;
+}
+
+.mitra-form{
+  background:#f7f7f7;
+  padding:40px;
+  border-radius:24px;
+  max-width:800px;
+  margin:auto;
+}
+
+.form-group{
+  margin-bottom:24px;
+}
+
+label{
+  display:block;
+  margin-bottom:10px;
+  font-weight:600;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  padding:16px;
+  border:1px solid #ddd;
+  border-radius:14px;
+  font-size:16px;
+}
+
+textarea{
+  resize:none;
+}
+
+.checkbox-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.checkbox-item input{
+  width:auto;
+}
+
+.submit-btn{
+  width:100%;
+  padding:18px;
+  background:#f97316;
+  color:#fff;
+  border:none;
+  border-radius:16px;
+  font-size:18px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.experience-year{
+  display:none;
+}
+
+/* FOOTER */
+
+footer{
+  background:#111;
+  color:#fff;
+  padding:60px 0;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:40px;
+}
+
+footer h3{
+  margin-bottom:20px;
+}
+
+footer p,
+footer a{
+  color:#ccc;
+  line-height:2;
+  text-decoration:none;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+  .hero-wrap{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:42px;
+  }
+
+  .menu{
+    display:none;
+  }
+
+  .cta{
+    padding:40px 20px;
+  }
+
+  .cta h2{
+    font-size:34px;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+<div class="container">
+
+<nav>
+
+<div class="logo">
+PROYEK<span>in</span>
+</div>
+
+<div class="menu">
+<a href="#">Beranda</a>
+<a href="#">Cari Jasa</a>
+<a href="#">Vendor</a>
+<a href="#">Gabung Mitra</a>
+<a href="#" class="btn">Pasang Jasa</a>
+</div>
+
+</nav>
+
+</div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="container hero-wrap">
+
+<div>
+
+<h1>
+Cari Alat, Operator,
+dan Jasa Proyek
+<span>Dengan Mudah</span>
+</h1>
+
+<p>
+PROYEKin mempertemukan pemilik alat,
+operator, mekanik, dan jasa proyek
+dengan pencari jasa secara cepat
+dan terpercaya.
+</p>
+
+<div class="hero-buttons">
+<a href="#" class="btn">Cari Jasa</a>
+<a href="#" class="btn btn-secondary">Gabung Mitra</a>
+</div>
+
+</div>
+
+<div>
+
+<img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CATEGORY -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+Kategori Populer
+</h2>
+
+<div class="categories">
+
+<div class="card">
+<h3>Excavator</h3>
+</div>
+
+<div class="card">
+<h3>Dump Truck</h3>
+</div>
+
+<div class="card">
+<h3>Operator</h3>
+</div>
+
+<div class="card">
+<h3>Mekanik</h3>
+</div>
+
+<div class="card">
+<h3>Tukang</h3>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- STEPS -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+Cara Kerja PROYEKin
+</h2>
+
+<div class="steps">
+
+<div class="step">
+<div class="step-number">1</div>
+<h3>Cari Jasa</h3>
+<p>Temukan alat dan jasa proyek sesuai kebutuhan.</p>
+</div>
+
+<div class="step">
+<div class="step-number">2</div>
+<h3>Hubungi Vendor</h3>
+<p>Hubungi vendor langsung via WhatsApp.</p>
+</div>
+
+<div class="step">
+<div class="step-number">3</div>
+<h3>Mulai Proyek</h3>
+<p>Deal pekerjaan dengan cepat dan mudah.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- VENDOR -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+Vendor Terbaru
+</h2>
+
+<div class="vendors">
+
+<div class="vendor-card">
+
+<img src="https://images.unsplash.com/photo-1599707254554-027aeb4deacd?q=80&w=1200&auto=format&fit=crop">
+
+<div class="vendor-content">
+
+<h3>Excavator PC200</h3>
+
+<p class="location">
+Banjarbaru, Kalimantan Selatan
+</p>
+
+<a href="#" class="btn">
+Hubungi WhatsApp
+</a>
+
+</div>
+
+</div>
+
+<div class="vendor-card">
+
+<img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=1200&auto=format&fit=crop">
+
+<div class="vendor-content">
+
+<h3>Rental Dump Truck</h3>
+
+<p class="location">
+Banjarmasin, Kalimantan Selatan
+</p>
+
+<a href="#" class="btn">
+Hubungi WhatsApp
+</a>
+
+</div>
+
+</div>
+
+<div class="vendor-card">
+
+<img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200&auto=format&fit=crop">
+
+<div class="vendor-content">
+
+<h3>Operator Excavator</h3>
+
+<p class="location">
+Martapura, Kalimantan Selatan
+</p>
+
+<a href="#" class="btn">
+Hubungi WhatsApp
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section>
+
+<div class="container">
+
+<div class="cta">
+
+<h2>
+Punya Alat atau Jasa Proyek?
+</h2>
+
+<p>
+Gabung menjadi mitra PROYEKin
+dan temukan pelanggan baru lebih mudah.
+</p>
+
+<a href="#" class="btn btn-secondary">
+Gabung Sekarang
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MITRA FORM -->
+
+<section class="mitra-section">
+
+<div class="container">
+
+<div class="mitra-header">
+
+<h2>
+Gabung Sebagai Mitra PROYEKin
+</h2>
+
+<p>
+Daftarkan alat, operator, mekanik,
+atau jasa proyek Anda sekarang.
+</p>
+
+</div>
+
+<form class="mitra-form">
+
+<div class="form-group">
+<label>Nama / Perusahaan</label>
+<input type="text" placeholder="CV Banua Jaya">
+</div>
+
+<div class="form-group">
+<label>Nomor WhatsApp</label>
+<input type="text" placeholder="08xxxxxxxxxx">
+</div>
+
+<div class="form-group">
+<label>Lokasi</label>
+<input type="text" placeholder="Banjarbaru">
+</div>
+
+<div class="form-group">
+
+<label>Jenis Mitra</label>
+
+<select>
+<option>Pilih Jenis Mitra</option>
+<option>Alat Berat</option>
+<option>Operator</option>
+<option>Mekanik</option>
+<option>Tukang</option>
+<option>Supplier Material</option>
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Deskripsi Jasa</label>
+
+<textarea rows="5"
+placeholder="Ceritakan layanan Anda">
+</textarea>
+
+</div>
+
+<div class="form-group">
+
+<label>Pengalaman Kerja (Opsional)</label>
+
+<textarea rows="4"
+placeholder="Contoh: biasa mengerjakan proyek jalan atau tambang">
+</textarea>
+
+</div>
+
+<div class="form-group checkbox-item">
+
+<input type="checkbox" id="showExperience">
+
+<label for="showExperience">
+Tampilkan lama pengalaman
+</label>
+
+</div>
+
+<div class="form-group experience-year" id="experienceField">
+
+<label>Lama Pengalaman</label>
+
+<select>
+<option>Pilih Lama Pengalaman</option>
+<option>Kurang dari 1 tahun</option>
+<option>1 - 3 tahun</option>
+<option>3 - 5 tahun</option>
+<option>5 - 10 tahun</option>
+<option>Lebih dari 10 tahun</option>
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Upload Foto</label>
+
+<input type="file">
+
+</div>
+
+<button type="submit" class="submit-btn">
+Gabung Sebagai Mitra
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div>
+
+<h3>PROYEKin</h3>
+
+<p>
+Platform kebutuhan proyek dan jasa lapangan
+yang mempertemukan penyedia jasa dan pencari jasa.
+</p>
+
+</div>
+
+<div>
+
+<h3>Menu</h3>
+
+<p><a href="#">Beranda</a></p>
+<p><a href="#">Cari Jasa</a></p>
+<p><a href="#">Gabung Mitra</a></p>
+
+</div>
+
+<div>
+
+<h3>Kontak</h3>
+
+<p>WhatsApp: 08xxxxxxxxxx</p>
+<p>Email: info@proyekin.id</p>
+
+</div>
+
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+const checkbox = document.getElementById('showExperience');
+const experienceField = document.getElementById('experienceField');
+
+checkbox.addEventListener('change', function(){
+
+  if(this.checked){
+    experienceField.style.display = 'block';
+  }else{
+    experienceField.style.display = 'none';
+  }
+
+});
+
+</script>
+
+</body>
+	</html>
