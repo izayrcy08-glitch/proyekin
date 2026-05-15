@@ -365,6 +365,23 @@ textarea{
   font-weight:600;
 }
 
+.mitra-warning{
+  margin-top:18px;
+  padding:16px;
+  border-radius:14px;
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  color:#9a3412;
+  line-height:1.7;
+  font-weight:600;
+}
+
+.mitra-warning a{
+  color:#c2410c;
+  font-weight:800;
+  text-decoration:none;
+}
+
 .cta{
   background:#f97316;
   padding:70px;
@@ -596,10 +613,24 @@ footer a{
 
 <div class="crew-request" id="crewRequest">
 <h4>Request Crew Operasional</h4>
-<p class="crew-note">Pilih kebutuhan crew secara bertingkat, isi lokasi pekerjaan, lalu kirim permintaan melalui WhatsApp.</p>
+<p class="crew-note">Pilih kebutuhan alat dan crew secara bertingkat, isi lokasi pekerjaan, lalu kirim permintaan melalui WhatsApp.</p>
 
 <details class="crew-group">
-<summary>Operator</summary>
+<summary>🚜 Alat</summary>
+<div class="crew-body">
+<div class="crew-options">
+<label class="crew-option"><input type="checkbox" data-role="Alat" data-name="Excavator">Excavator</label>
+<label class="crew-option"><input type="checkbox" data-role="Alat" data-name="Dozer">Dozer</label>
+<label class="crew-option"><input type="checkbox" data-role="Alat" data-name="Vibro">Vibro</label>
+<label class="crew-option"><input type="checkbox" data-role="Alat" data-name="Dump Truk/Towing">Dump Truk/Towing</label>
+<label class="crew-option"><input type="checkbox" data-role="Alat" data-name="Wheel Loader">Wheel Loader</label>
+<label class="crew-option"><input type="checkbox" data-role="Alat" data-name="Motor Grader">Motor Grader</label>
+</div>
+</div>
+</details>
+
+<details class="crew-group">
+<summary>👷 Operator</summary>
 <div class="crew-body">
 <details class="crew-category">
 <summary>Operator Exca</summary>
@@ -632,7 +663,18 @@ footer a{
 </details>
 
 <details class="crew-category">
-<summary>Mobil &amp; Truk (DT)</summary>
+<summary>Motor Grader</summary>
+<div class="crew-options">
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Rudi" data-phone="6281253003886">Rudi</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Zain" data-phone="6282251869325">Zain</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Fadil" data-phone="6281256108500">Fadil</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="David" data-phone="6285348602574">David</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Harsa" data-phone="6281225162644">Harsa</label>
+</div>
+</details>
+
+<details class="crew-category">
+<summary>Dump Truk/Towing</summary>
 <div class="crew-options">
 <label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Zain" data-phone="6282251869325">Zain</label>
 <label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Rudi" data-phone="6281253003886">Rudi</label>
@@ -671,7 +713,7 @@ footer a{
 </details>
 
 <details class="crew-group">
-<summary>Mekanik</summary>
+<summary>🔧 Mekanik</summary>
 <div class="crew-body">
 <details class="crew-category">
 <summary>Mekanik Alat Berat</summary>
@@ -692,7 +734,7 @@ footer a{
 </details>
 
 <details class="crew-group">
-<summary>Helper</summary>
+<summary>🦺 Helper</summary>
 <div class="crew-body">
 <div class="crew-options">
 <label class="crew-option"><input type="checkbox" data-role="Helper" data-name="Zain" data-phone="6282251869325">Zain</label>
@@ -798,6 +840,12 @@ footer a{
 <input type="file">
 </div>
 <button type="submit" class="submit-btn">Gabung Sebagai Mitra</button>
+<p class="mitra-warning">
+⚠️ Pendaftaran vendor/mitra saat ini belum tersedia langsung melalui website.<br><br>
+Jika Anda tertarik bergabung sebagai mitra PROYEKin, silahkan hubungi admin melalui WhatsApp
+<a href="https://wa.me/6282251869325">082251869325</a>
+untuk proses pendataan dan verifikasi lebih lanjut.
+</p>
 </form>
 </div>
 </section>
@@ -871,7 +919,7 @@ function groupCrewByRole(selectedCrew){
 
 function buildWhatsAppMessage(selectedCrew, location){
   const groupedCrew = groupCrewByRole(selectedCrew);
-  const roleOrder = ['Operator', 'Helper', 'Mekanik'];
+  const roleOrder = ['Alat', 'Operator', 'Helper', 'Mekanik'];
   const messageLines = [
     'Halo, izin bertanya apakah saat ini tersedia untuk pekerjaan/proyek?',
     '',
@@ -884,7 +932,7 @@ function buildWhatsAppMessage(selectedCrew, location){
       return;
     }
 
-    messageLines.push('- ' + role + ':');
+    messageLines.push('• ' + role + ':');
     groupedCrew[role].forEach(function(crew){
       messageLines.push('* ' + crew.name);
     });
@@ -900,8 +948,20 @@ function buildWhatsAppMessage(selectedCrew, location){
 }
 
 function getTargetPhone(selectedCrew){
-  if(selectedCrew.length === 1){
-    return selectedCrew[0].phone;
+  const groupedCrew = groupCrewByRole(selectedCrew);
+  const selectedAlat = groupedCrew.Alat || [];
+  const selectedOperator = groupedCrew.Operator || [];
+  const selectedHelper = groupedCrew.Helper || [];
+  const selectedMekanik = groupedCrew.Mekanik || [];
+
+  const onlyOperatorOrSingleAlatWithOperator =
+    selectedOperator.length === 1 &&
+    selectedHelper.length === 0 &&
+    selectedMekanik.length === 0 &&
+    selectedAlat.length <= 1;
+
+  if(onlyOperatorOrSingleAlatWithOperator){
+    return selectedOperator[0].phone;
   }
 
   return adminPhone;
