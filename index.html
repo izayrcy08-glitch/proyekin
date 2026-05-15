@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PROYEKin - Platform Jasa & Kebutuhan Proyek</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
 *{
   margin:0;
   padding:0;
@@ -28,8 +25,6 @@ body{
   max-width:1200px;
   margin:auto;
 }
-
-/* HEADER */
 
 header{
   background:#fff;
@@ -51,7 +46,8 @@ nav{
   font-weight:800;
 }
 
-.logo span{
+.logo span,
+.accent{
   color:#f97316;
 }
 
@@ -74,12 +70,18 @@ nav{
   border-radius:12px;
   text-decoration:none;
   font-weight:700;
-  display:inline-block;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border:none;
+  cursor:pointer;
   transition:0.3s;
 }
 
 .btn:hover{
   opacity:0.9;
+  transform:translateY(-1px);
 }
 
 .btn-secondary{
@@ -87,8 +89,6 @@ nav{
   border:2px solid #ddd;
   color:#111;
 }
-
-/* HERO */
 
 .hero{
   padding:80px 0;
@@ -108,10 +108,6 @@ nav{
   margin-bottom:24px;
 }
 
-.hero h1 span{
-  color:#f97316;
-}
-
 .hero p{
   font-size:18px;
   line-height:1.8;
@@ -127,10 +123,10 @@ nav{
 
 .hero img{
   width:100%;
+  min-height:360px;
+  object-fit:cover;
   border-radius:24px;
 }
-
-/* SECTION */
 
 section{
   padding:80px 0;
@@ -142,18 +138,24 @@ section{
   margin-bottom:50px;
 }
 
-/* CATEGORIES */
-
-.categories{
+.categories,
+.steps,
+.vendors{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+}
+
+.card,
+.step,
+.vendor-card{
+  background:#fff;
+  border-radius:20px;
+  box-shadow:0 16px 40px rgba(15,23,42,0.06);
 }
 
 .card{
-  background:#fff;
   padding:30px;
-  border-radius:20px;
   text-align:center;
   transition:0.3s;
 }
@@ -162,22 +164,8 @@ section{
   transform:translateY(-5px);
 }
 
-.card h3{
-  margin-top:10px;
-}
-
-/* STEPS */
-
-.steps{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:25px;
-}
-
 .step{
-  background:#fff;
   padding:35px;
-  border-radius:20px;
   text-align:center;
 }
 
@@ -190,37 +178,21 @@ section{
   display:flex;
   align-items:center;
   justify-content:center;
-  margin:auto;
+  margin:0 auto 20px;
   font-size:24px;
   font-weight:800;
-  margin-bottom:20px;
-}
-
-/* VENDOR */
-
-.vendors{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:25px;
 }
 
 .vendor-card{
-  background:#fff;
-  border-radius:20px;
   overflow:hidden;
 }
 
-.vendor-card img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-}
-
 .vendor-content{
-  padding:24px;
+  padding:28px;
 }
 
 .vendor-content h3{
+  font-size:26px;
   margin-bottom:10px;
 }
 
@@ -229,7 +201,169 @@ section{
   margin-bottom:20px;
 }
 
-/* CTA */
+.asset-list{
+  color:#333;
+  line-height:1.9;
+  margin-bottom:24px;
+}
+
+.crew-request{
+  border-top:1px solid #eee;
+  padding-top:24px;
+  margin-top:24px;
+}
+
+.crew-request h4{
+  font-size:24px;
+  margin-bottom:8px;
+}
+
+.crew-note{
+  color:#666;
+  line-height:1.7;
+  margin-bottom:18px;
+}
+
+.crew-group,
+.crew-category{
+  background:#fff;
+  border:1px solid #e8e8e8;
+  border-radius:14px;
+  margin-bottom:12px;
+  overflow:hidden;
+}
+
+.crew-group summary,
+.crew-category summary{
+  cursor:pointer;
+  list-style:none;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  font-weight:800;
+}
+
+.crew-group summary::-webkit-details-marker,
+.crew-category summary::-webkit-details-marker{
+  display:none;
+}
+
+.crew-group > summary{
+  padding:17px 18px;
+  background:#fff7ed;
+  color:#9a3412;
+}
+
+.crew-category > summary{
+  padding:15px 16px;
+  background:#fafafa;
+  color:#222;
+}
+
+.crew-group summary::after,
+.crew-category summary::after{
+  content:"+";
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+  color:#f97316;
+  border:1px solid #fed7aa;
+  flex:0 0 auto;
+}
+
+.crew-group[open] > summary::after,
+.crew-category[open] > summary::after{
+  content:"-";
+}
+
+.crew-body{
+  padding:14px;
+}
+
+.crew-options{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+  gap:10px;
+  padding:12px;
+}
+
+.crew-option{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px;
+  border:1px solid #eee;
+  border-radius:12px;
+  background:#fff;
+  font-weight:600;
+}
+
+.crew-option input{
+  width:auto;
+  accent-color:#f97316;
+}
+
+.crew-actions{
+  margin-top:20px;
+}
+
+.crew-actions input{
+  margin-bottom:18px;
+}
+
+label{
+  display:block;
+  margin-bottom:10px;
+  font-weight:600;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  padding:16px;
+  border:1px solid #ddd;
+  border-radius:14px;
+  font-size:16px;
+  font-family:inherit;
+}
+
+textarea{
+  resize:none;
+}
+
+.submit-btn{
+  width:100%;
+  padding:18px;
+  background:#f97316;
+  color:#fff;
+  border:none;
+  border-radius:16px;
+  font-size:18px;
+  font-weight:800;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.submit-btn:hover{
+  background:#ea580c;
+}
+
+.crew-error{
+  display:none;
+  color:#b91c1c;
+  background:#fee2e2;
+  border:1px solid #fecaca;
+  padding:12px 14px;
+  border-radius:12px;
+  margin-top:12px;
+  font-weight:600;
+}
 
 .cta{
   background:#f97316;
@@ -248,8 +382,6 @@ section{
   margin-bottom:30px;
   font-size:18px;
 }
-
-/* MITRA FORM */
 
 .mitra-section{
   background:#fff;
@@ -283,26 +415,6 @@ section{
   margin-bottom:24px;
 }
 
-label{
-  display:block;
-  margin-bottom:10px;
-  font-weight:600;
-}
-
-input,
-textarea,
-select{
-  width:100%;
-  padding:16px;
-  border:1px solid #ddd;
-  border-radius:14px;
-  font-size:16px;
-}
-
-textarea{
-  resize:none;
-}
-
 .checkbox-item{
   display:flex;
   align-items:center;
@@ -313,23 +425,9 @@ textarea{
   width:auto;
 }
 
-.submit-btn{
-  width:100%;
-  padding:18px;
-  background:#f97316;
-  color:#fff;
-  border:none;
-  border-radius:16px;
-  font-size:18px;
-  font-weight:700;
-  cursor:pointer;
-}
-
 .experience-year{
   display:none;
 }
-
-/* FOOTER */
 
 footer{
   background:#111;
@@ -354,10 +452,7 @@ footer a{
   text-decoration:none;
 }
 
-/* RESPONSIVE */
-
 @media(max-width:900px){
-
   .hero-wrap{
     grid-template-columns:1fr;
   }
@@ -374,693 +469,321 @@ footer a{
     padding:40px 20px;
   }
 
-  .cta h2{
+  .cta h2,
+  .section-title,
+  .mitra-header h2{
     font-size:34px;
   }
 
   .footer-grid{
     grid-template-columns:1fr;
   }
-
 }
 
+@media(max-width:560px){
+  section{
+    padding:56px 0;
+  }
+
+  .hero{
+    padding:56px 0;
+  }
+
+  .hero h1{
+    font-size:36px;
+  }
+
+  .vendor-content,
+  .mitra-form{
+    padding:22px;
+  }
+
+  .crew-options{
+    grid-template-columns:1fr;
+  }
+}
 </style>
 </head>
 
 <body>
-
-<!-- HEADER -->
-
 <header>
-
 <div class="container">
-
 <nav>
-
-<div class="logo">
-PROYEK<span>in</span>
-</div>
-
+<div class="logo">PROYEK<span>in</span></div>
 <div class="menu">
 <a href="#">Beranda</a>
-<a href="#">Cari Jasa</a>
-<a href="#">Vendor</a>
-<a href="#">Gabung Mitra</a>
-<a href="#" class="btn">Pasang Jasa</a>
+<a href="#vendor">Cari Jasa</a>
+<a href="#vendor">Vendor</a>
+<a href="#mitra">Gabung Mitra</a>
+<a href="#vendor" class="btn">Request Crew</a>
 </div>
-
 </nav>
-
 </div>
-
 </header>
 
-<!-- HERO -->
-
 <section class="hero">
-
 <div class="container hero-wrap">
-
 <div>
-
-<h1>
-Cari Alat, Operator,
-dan Jasa Proyek
-<span>Dengan Mudah</span>
-</h1>
-
-<p>
-PROYEKin mempertemukan pemilik alat,
-operator, mekanik, dan jasa proyek
-dengan pencari jasa secara cepat
-dan terpercaya.
-</p>
-
+<h1>Cari Alat, Operator, dan Jasa Proyek <span class="accent">Dengan Mudah</span></h1>
+<p>PROYEKin mempertemukan pemilik alat, operator, mekanik, helper, dan jasa proyek dengan pencari jasa secara cepat dan terpercaya.</p>
 <div class="hero-buttons">
-<a href="#" class="btn">Cari Jasa</a>
-<a href="#" class="btn btn-secondary">Gabung Mitra</a>
+<a href="#vendor" class="btn">Cari Jasa</a>
+<a href="#mitra" class="btn btn-secondary">Gabung Mitra</a>
 </div>
-
 </div>
-
 <div>
-
-<img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop">
-
+<img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop" alt="Aktivitas proyek konstruksi">
 </div>
-
 </div>
-
 </section>
 
-<!-- CATEGORY -->
-
 <section>
-
 <div class="container">
-
-<h2 class="section-title">
-Kategori Populer
-</h2>
-
+<h2 class="section-title">Kategori Populer</h2>
 <div class="categories">
-
-<div class="card">
-<h3>Alat-Alat Berat(A2B)</h3>
+<div class="card"><h3>Alat-Alat Berat (A2B)</h3></div>
+<div class="card"><h3>Dump Truck</h3></div>
+<div class="card"><h3>Operator</h3></div>
+<div class="card"><h3>Mekanik</h3></div>
+<div class="card"><h3>Helper</h3></div>
 </div>
-
-<div class="card">
-<h3>Dump Truck</h3>
 </div>
-
-<div class="card">
-<h3>Operator</h3>
-</div>
-
-<div class="card">
-<h3>Mekanik</h3>
-</div>
-
-<div class="card">
-<h3>Tukang</h3>
-</div>
-
-</div>
-
-</div>
-
 </section>
 
-<!-- STEPS -->
-
 <section>
-
 <div class="container">
-
-<h2 class="section-title">
-Cara Kerja PROYEKin
-</h2>
-
+<h2 class="section-title">Cara Kerja PROYEKin</h2>
 <div class="steps">
-
 <div class="step">
 <div class="step-number">1</div>
-<h3>Cari Jasa</h3>
-<p>Temukan alat dan jasa proyek sesuai kebutuhan.</p>
+<h3>Pilih Kebutuhan</h3>
+<p>Temukan alat, operator, mekanik, atau helper sesuai kebutuhan proyek.</p>
 </div>
-
 <div class="step">
 <div class="step-number">2</div>
-<h3>Hubungi Vendor</h3>
-<p>Hubungi vendor langsung via WhatsApp.</p>
+<h3>Kirim Permintaan</h3>
+<p>Isi crew dan lokasi, lalu kirim pesan otomatis via WhatsApp.</p>
 </div>
-
 <div class="step">
 <div class="step-number">3</div>
 <h3>Mulai Proyek</h3>
-<p>Deal pekerjaan dengan cepat dan mudah.</p>
+<p>Koordinasi kesiapan crew dan mulai pekerjaan lebih cepat.</p>
 </div>
-
 </div>
-
 </div>
-
 </section>
 
-<!-- VENDOR -->
-
-<section>
-
+<section id="vendor">
 <div class="container">
-
-<h2 class="section-title">
-Vendor Terbaru
-</h2>
-
+<h2 class="section-title">Vendor Terbaru</h2>
 <div class="vendors">
-
 <div class="vendor-card">
-
 <div class="vendor-content">
-
 <h3>Dinas PUPR Kab. Barito Utara</h3>
+<p class="location">Muara Teweh, Barito Utara</p>
 
-<p class="location">
-Muara Teweh, Barito Utara
+<p class="asset-list">
+<strong>A2B Tersedia:</strong><br>
+- Grader CAT 120K<br>
+- Bulldozer<br>
+- Kobelco SK50<br>
+- Komatsu PC45<br>
+- Kobelco SK200<br>
+- Vibro/kompek<br>
+- Baby Roller<br>
+- Wheel Loader XCMG
 </p>
 
-<p>
-<strong>A2B Tersedia:</strong><br><br>
+<div class="crew-request" id="crewRequest">
+<h4>Request Crew Operasional</h4>
+<p class="crew-note">Pilih kebutuhan crew secara bertingkat, isi lokasi pekerjaan, lalu kirim permintaan melalui WhatsApp.</p>
 
-• Grader CAT 120K<br>
-• Bulldozer<br>
-• Kobelco SK50<br>
-• Komatsu PC45<br>
-• Kobelco SK200<br>
-• Vibro/kompek<br>
-• Baby Roller<br>
-• Wheel Loader XCMG
-</p>
-
-<br>
-
-<details>
-
-<summary class="btn">
-👷 Operator
-</summary>
-
-<div style="margin-top:20px;">
-
-<!-- OPERATOR EXCA -->
-
-<details>
-<summary style="
-background:#e0f2fe;
-color:#0369a1;
-padding:14px 24px;
-border-radius:12px;
-font-weight:700;
-cursor:pointer;
-display:inline-block;
-margin-bottom:10px;
-">
-Operator Exca
-</summary>
-
-<div style="margin-top:15px; padding-left:10px;">
-
-<a href="https://wa.me/6282251869325?text=Halo,%20saya%20membutuhkan%20Operator%20Exca%20Zain" class="btn btn-secondary">Zain</a><br><br>
-
-<a href="https://wa.me/6281253003886?text=Halo,%20saya%20membutuhkan%20Operator%20Exca%20Rudi" class="btn btn-secondary">Rudi</a><br><br>
-
-<a href="https://wa.me/6282253470181?text=Halo,%20saya%20membutuhkan%20Operator%20Exca%20Rasyid" class="btn btn-secondary">Rasyid</a><br><br>
-
-<a href="https://wa.me/6281253129708?text=Halo,%20saya%20membutuhkan%20Operator%20Exca%20Yogi" class="btn btn-secondary">Yogi</a><br><br>
-
-<a href="https://wa.me/6281256108500?text=Halo,%20saya%20membutuhkan%20Operator%20Exca%20Fadil" class="btn btn-secondary">Fadil</a><br><br>
-
-<a href="https://wa.me/6281549116206?text=Halo,%20saya%20membutuhkan%20Operator%20Exca%20Yusa" class="btn btn-secondary">Yusa</a><br><br>
-
-<a href="https://wa.me/6285393609589?text=Halo,%20saya%20membutuhkan%20Operator%20Exca%20Yames" class="btn btn-secondary">Yames</a><br><br>
-
-<a href="https://wa.me/6282217571302?text=Halo,%20saya%20membutuhkan%20Operator%20Exca%20Devri" class="btn btn-secondary">Devri</a><br><br>
-
-<a href="https://wa.me/6282277661195?text=Halo,%20saya%20membutuhkan%20Operator%20Exca%20Apri" class="btn btn-secondary">Apri</a><br><br>
-
-<a href="https://wa.me/6285348602574?text=Halo,%20saya%20membutuhkan%20Operator%20Exca%20David" class="btn btn-secondary">David</a><br><br>
-
-<a href="https://wa.me/6282155255627?text=Halo,%20saya%20membutuhkan%20Operator%20Exca%20Diqin" class="btn btn-secondary">Diqin</a><br><br>
-
-<a href="https://wa.me/6281348452621?text=Halo,%20saya%20membutuhkan%20Operator%20Exca%20Razi" class="btn btn-secondary">Razi</a>
-
+<details class="crew-group">
+<summary>Operator</summary>
+<div class="crew-body">
+<details class="crew-category">
+<summary>Operator Exca</summary>
+<div class="crew-options">
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Zain" data-phone="6282251869325">Zain</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Rudi" data-phone="6281253003886">Rudi</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Rasyid" data-phone="6282253470181">Rasyid</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Yogi" data-phone="6281253129708">Yogi</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Fadil" data-phone="6281256108500">Fadil</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Yusa" data-phone="6281549116206">Yusa</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Yames" data-phone="6285393609589">Yames</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Devri" data-phone="6282217571302">Devri</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Apri" data-phone="6282277661195">Apri</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="David" data-phone="6285348602574">David</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Diqin" data-phone="6282155255627">Diqin</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Razi" data-phone="6281348452621">Razi</label>
 </div>
 </details>
 
-<br>
-
-<!-- OPERATOR GRADER -->
-	
-<details>
-<summary style="
-background:#e0f2fe;
-color:#0369a1;
-padding:14px 24px;
-border-radius:12px;
-font-weight:700;
-cursor:pointer;
-display:inline-block;
-margin-bottom:10px;
-">
-Operator Grader
-</summary>
-
-<div style="margin-top:15px; padding-left:10px;">
-
-<a href="https://wa.me/6281253003886?text=Halo,%20saya%20membutuhkan%20Operator%20Grader%20Rudi" class="btn btn-secondary">Rudi</a><br><br>
-
-<a href="https://wa.me/6282251869325?text=Halo,%20saya%20membutuhkan%20Operator%20Grader%20Zain" class="btn btn-secondary">Zain</a><br><br>
-
-<a href="https://wa.me/6281256108500?text=Halo,%20saya%20membutuhkan%20Operator%20Grader%20Fadil" class="btn btn-secondary">Fadil</a><br><br>
-
-<a href="https://wa.me/6285348602574?text=Halo,%20saya%20membutuhkan%20Operator%20Grader%20David" class="btn btn-secondary">David</a><br><br>
-
-<a href="https://wa.me/6281225162644?text=Halo,%20saya%20membutuhkan%20Operator%20Grader%20Harsa" class="btn btn-secondary">Harsa</a>
-
+<details class="crew-category">
+<summary>Operator Dozer</summary>
+<div class="crew-options">
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Yogi" data-phone="6281253129708">Yogi</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Devri" data-phone="6282217571302">Devri</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="David" data-phone="6285348602574">David</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Yusa" data-phone="6281549116206">Yusa</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Yames" data-phone="6285393609589">Yames</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Rasyid" data-phone="6282253470181">Rasyid</label>
 </div>
 </details>
 
-<br>
-
-<!-- OPERATOR DOZER -->
-
-<details>
-<summary style="
-background:#e0f2fe;
-color:#0369a1;
-padding:14px 24px;
-border-radius:12px;
-font-weight:700;
-cursor:pointer;
-display:inline-block;
-margin-bottom:10px;
-">
-Operator Dozer
-</summary>
-
-<div style="margin-top:15px; padding-left:10px;">
-
-<a href="https://wa.me/6281253129708?text=Halo,%20saya%20membutuhkan%20Operator%20Dozer%20Yogi" class="btn btn-secondary">Yogi</a><br><br>
-
-<a href="https://wa.me/6282217571302?text=Halo,%20saya%20membutuhkan%20Operator%20Dozer%20Devri" class="btn btn-secondary">Devri</a><br><br>
-
-<a href="https://wa.me/6285348602574?text=Halo,%20saya%20membutuhkan%20Operator%20Dozer%20David" class="btn btn-secondary">David</a><br><br>
-
-<a href="https://wa.me/6281549116206?text=Halo,%20saya%20membutuhkan%20Operator%20Dozer%20Yusa" class="btn btn-secondary">Yusa</a><br><br>
-
-<a href="https://wa.me/6285393609589?text=Halo,%20saya%20membutuhkan%20Operator%20Dozer%20Yames" class="btn btn-secondary">Yames</a><br><br>
-
-<a href="https://wa.me/6282253470181?text=Halo,%20saya%20membutuhkan%20Operator%20Dozer%20Rasyid" class="btn btn-secondary">Rasyid</a>
-
+<details class="crew-category">
+<summary>Mobil &amp; Truk (DT)</summary>
+<div class="crew-options">
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Zain" data-phone="6282251869325">Zain</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Rudi" data-phone="6281253003886">Rudi</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Rasyid" data-phone="6282253470181">Rasyid</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Fadil" data-phone="6281256108500">Fadil</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Harsa" data-phone="6281225162644">Harsa</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Yusuf" data-phone="6281912608823">Yusuf</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Yames" data-phone="6285393609589">Yames</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Yusa" data-phone="6281549116206">Yusa</label>
 </div>
 </details>
 
-<br>
-
-<!-- MOBIL & DT -->
-
-<details>
-<summary style="
-background:#e0f2fe;
-color:#0369a1;
-padding:14px 24px;
-border-radius:12px;
-font-weight:700;
-cursor:pointer;
-display:inline-block;
-margin-bottom:10px;
-">
-Mobil & Truk(DT)
-</summary>
-
-<div style="margin-top:15px; padding-left:10px;">
-
-<a href="https://wa.me/6282251869325?text=Halo,%20saya%20membutuhkan%20Supir%20DT%20Zain" class="btn btn-secondary">Zain</a><br><br>
-
-<a href="https://wa.me/6281253003886?text=Halo,%20saya%20membutuhkan%20Supir%20DT%20Rudi" class="btn btn-secondary">Rudi</a><br><br>
-
-<a href="https://wa.me/6282253470181?text=Halo,%20saya%20membutuhkan%20Supir%20DT%20Rasyid" class="btn btn-secondary">Rasyid</a><br><br>
-
-<a href="https://wa.me/6281256108500?text=Halo,%20saya%20membutuhkan%20Supir%20DT%20Fadil" class="btn btn-secondary">Fadil</a><br><br>
-
-<a href="https://wa.me/6281225162644?text=Halo,%20saya%20membutuhkan%20Supir%20DT%20Harsa" class="btn btn-secondary">Harsa</a><br><br>
-
-<a href="https://wa.me/6281912608823?text=Halo,%20saya%20membutuhkan%20Supir%20DT%20Yusuf" class="btn btn-secondary">Yusuf</a><br><br>
-
-<a href="https://wa.me/6285393609589?text=Halo,%20saya%20membutuhkan%20Supir%20DT%20Yames" class="btn btn-secondary">Yames</a><br><br>
-
-<a href="https://wa.me/6281549116206?text=Halo,%20saya%20membutuhkan%20Supir%20DT%20Yusa" class="btn btn-secondary">Yusa</a>
-
+<details class="crew-category">
+<summary>Operator Vibro</summary>
+<div class="crew-options">
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Apri" data-phone="6282277661195">Apri</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Diqin" data-phone="6282155255627">Diqin</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Rudi" data-phone="6281253003886">Rudi</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Yoga" data-phone="6285751951397">Yoga</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Sapri" data-phone="6285311111233">Sapri</label>
 </div>
 </details>
 
-<br>
-
-<!-- OPERATOR VIBRO -->
-	
-<details>
-<summary style="
-background:#e0f2fe;
-color:#0369a1;
-padding:14px 24px;
-border-radius:12px;
-font-weight:700;
-cursor:pointer;
-display:inline-block;
-margin-bottom:10px;
-">
-Operator Vibro
-</summary>
-
-<div style="margin-top:15px; padding-left:10px;">
-
-<a href="https://wa.me/6282277661195?text=Halo,%20saya%20membutuhkan%20Operator%20Vibro%20Apri" class="btn btn-secondary">Apri</a><br><br>
-
-<a href="https://wa.me/6282155255627?text=Halo,%20saya%20membutuhkan%20Operator%20Vibro%20Diqin" class="btn btn-secondary">Diqin</a><br><br>
-
-<a href="https://wa.me/6281253003886?text=Halo,%20saya%20membutuhkan%20Operator%20Vibro%20Rudi" class="btn btn-secondary">Rudi</a><br><br>
-
-<a href="https://wa.me/6285751951397?text=Halo,%20saya%20membutuhkan%20Operator%20Vibro%20Yoga" class="btn btn-secondary">Yoga</a><br><br>
-
-<a href="https://wa.me/6285311111233?text=Halo,%20saya%20membutuhkan%20Operator%20Vibro%20Sapri" class="btn btn-secondary">Sapri</a>
-
+<details class="crew-category">
+<summary>Wheel Loader</summary>
+<div class="crew-options">
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Devri" data-phone="6282217571302">Devri</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Yogi" data-phone="6281253129708">Yogi</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Yusa" data-phone="6281549116206">Yusa</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Yames" data-phone="6285393609589">Yames</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Fadil" data-phone="6281256108500">Fadil</label>
+<label class="crew-option"><input type="checkbox" data-role="Operator" data-name="Rudi" data-phone="6281253003886">Rudi</label>
+</div>
+</details>
 </div>
 </details>
 
-<br>
-
-<!-- WHEEL LOADER -->
-	
-<details>
-<summary style="
-background:#e0f2fe;
-color:#0369a1;
-padding:14px 24px;
-border-radius:12px;
-font-weight:700;
-cursor:pointer;
-display:inline-block;
-margin-bottom:10px;
-">
-Wheel Loader
-</summary>
-
-<div style="margin-top:15px; padding-left:10px;">
-
-<a href="https://wa.me/6282217571302?text=Halo,%20saya%20membutuhkan%20Operator%20Wheel%20Loader%20Devri" class="btn btn-secondary">Devri</a><br><br>
-
-<a href="https://wa.me/6281253129708?text=Halo,%20saya%20membutuhkan%20Operator%20Wheel%20Loader%20Yogi" class="btn btn-secondary">Yogi</a><br><br>
-
-<a href="https://wa.me/6281549116206?text=Halo,%20saya%20membutuhkan%20Operator%20Wheel%20Loader%20Yusa" class="btn btn-secondary">Yusa</a><br><br>
-
-<a href="https://wa.me/6285393609589?text=Halo,%20saya%20membutuhkan%20Operator%20Wheel%20Loader%20Yames" class="btn btn-secondary">Yames</a><br><br>
-
-<a href="https://wa.me/6281256108500?text=Halo,%20saya%20membutuhkan%20Operator%20Wheel%20Loader%20Fadil" class="btn btn-secondary">Fadil</a><br><br>
-
-<a href="https://wa.me/6281253003886?text=Halo,%20saya%20membutuhkan%20Operator%20Wheel%20Loader%20Rudi" class="btn btn-secondary">Rudi</a>
-
+<details class="crew-group">
+<summary>Mekanik</summary>
+<div class="crew-body">
+<details class="crew-category">
+<summary>Mekanik Alat Berat</summary>
+<div class="crew-options">
+<label class="crew-option"><input type="checkbox" data-role="Mekanik" data-name="Harsa" data-phone="6281225162644">Harsa</label>
+<label class="crew-option"><input type="checkbox" data-role="Mekanik" data-name="Yusuf" data-phone="6281912608823">Yusuf</label>
+<label class="crew-option"><input type="checkbox" data-role="Mekanik" data-name="Anto" data-phone="62895363247708">Anto</label>
+<label class="crew-option"><input type="checkbox" data-role="Mekanik" data-name="Razi" data-phone="6281348452621">Razi</label>
+</div>
+</details>
+<details class="crew-category">
+<summary>Mekanik Las</summary>
+<div class="crew-options">
+<label class="crew-option"><input type="checkbox" data-role="Mekanik" data-name="Anto" data-phone="62895363247708">Anto</label>
+</div>
+</details>
 </div>
 </details>
 
+<details class="crew-group">
+<summary>Helper</summary>
+<div class="crew-body">
+<div class="crew-options">
+<label class="crew-option"><input type="checkbox" data-role="Helper" data-name="Zain" data-phone="6282251869325">Zain</label>
+<label class="crew-option"><input type="checkbox" data-role="Helper" data-name="Rudi" data-phone="6281253003886">Rudi</label>
+<label class="crew-option"><input type="checkbox" data-role="Helper" data-name="Rasyid" data-phone="6282253470181">Rasyid</label>
+<label class="crew-option"><input type="checkbox" data-role="Helper" data-name="Yogi" data-phone="6281253129708">Yogi</label>
+<label class="crew-option"><input type="checkbox" data-role="Helper" data-name="Fadil" data-phone="6281256108500">Fadil</label>
+<label class="crew-option"><input type="checkbox" data-role="Helper" data-name="Yusa" data-phone="6281549116206">Yusa</label>
+<label class="crew-option"><input type="checkbox" data-role="Helper" data-name="Yames" data-phone="6285393609589">Yames</label>
+<label class="crew-option"><input type="checkbox" data-role="Helper" data-name="Devri" data-phone="6282217571302">Devri</label>
+<label class="crew-option"><input type="checkbox" data-role="Helper" data-name="Apri" data-phone="6282277661195">Apri</label>
+<label class="crew-option"><input type="checkbox" data-role="Helper" data-name="David" data-phone="6285348602574">David</label>
+<label class="crew-option"><input type="checkbox" data-role="Helper" data-name="Diqin" data-phone="6282155255627">Diqin</label>
+<label class="crew-option"><input type="checkbox" data-role="Helper" data-name="Razi" data-phone="6281348452621">Razi</label>
+<label class="crew-option"><input type="checkbox" data-role="Helper" data-name="Harsa" data-phone="6281225162644">Harsa</label>
+<label class="crew-option"><input type="checkbox" data-role="Helper" data-name="Yusuf" data-phone="6281912608823">Yusuf</label>
+<label class="crew-option"><input type="checkbox" data-role="Helper" data-name="Anto" data-phone="62895363247708">Anto</label>
+<label class="crew-option"><input type="checkbox" data-role="Helper" data-name="Yoga" data-phone="6285751951397">Yoga</label>
+<label class="crew-option"><input type="checkbox" data-role="Helper" data-name="Sapri" data-phone="6285311111233">Sapri</label>
 </div>
-
+</div>
 </details>
 
-<br><br>
-
-<!-- MEKANIK -->
-
-<details>
-
-<summary class="btn">
-🔧 Mekanik
-</summary>
-
-<div style="margin-top:20px; padding-left:10px;">
-
-<a href="https://wa.me/6281225162644?text=Halo,%20saya%20membutuhkan%20Mekanik%20Harsa" class="btn btn-secondary">Harsa</a><br><br>
-
-<a href="https://wa.me/6281912608823?text=Halo,%20saya%20membutuhkan%20Mekanik%20Yusuf" class="btn btn-secondary">Yusuf</a><br><br>
-
-<a href="https://wa.me/62895363247708?text=Halo,%20saya%20membutuhkan%20Mekanik%20Anto" class="btn btn-secondary">Anto</a><br><br>
-
-<a href="https://wa.me/6281348452621?text=Halo,%20saya%20membutuhkan%20Mekanik%20Razi" class="btn btn-secondary">Razi</a><br><br>
-
-<a href="https://wa.me/62895363247708?text=Halo,%20saya%20membutuhkan%20Mekanik%20Las%20Anto" class="btn btn-secondary">
-Mekanik Las: Anto
-</a>
-
+<div class="crew-actions">
+<label for="jobLocation">Lokasi pekerjaan</label>
+<input type="text" id="jobLocation" placeholder="Contoh: Muara Teweh">
+<button type="button" class="submit-btn" id="sendCrewRequest">Kirim Permintaan</button>
+<p class="crew-error" id="crewError">Pilih minimal satu crew dan isi lokasi pekerjaan.</p>
 </div>
-
-</details>
-	<br><br>
-
-<!-- HELPER -->
-
-<details>
-
-<summary class="btn">
-🦺 Helper
-</summary>
-
-<div style="margin-top:20px; padding-left:10px;">
-
-<a href="https://wa.me/6282251869325?text=Halo,%20saya%20membutuhkan%20Helper%20Zain" class="btn btn-secondary">
-Zain
-</a>
-
-<br><br>
-
-<a href="https://wa.me/6281253003886?text=Halo,%20saya%20membutuhkan%20Helper%20Rudi" class="btn btn-secondary">
-Rudi
-</a>
-
-<br><br>
-
-<a href="https://wa.me/6282253470181?text=Halo,%20saya%20membutuhkan%20Helper%20Rasyid" class="btn btn-secondary">
-Rasyid
-</a>
-
-<br><br>
-
-<a href="https://wa.me/6281253129708?text=Halo,%20saya%20membutuhkan%20Helper%20Yogi" class="btn btn-secondary">
-Yogi
-</a>
-
-<br><br>
-
-<a href="https://wa.me/6281256108500?text=Halo,%20saya%20membutuhkan%20Helper%20Fadil" class="btn btn-secondary">
-Fadil
-</a>
-
-<br><br>
-
-<a href="https://wa.me/6281549116206?text=Halo,%20saya%20membutuhkan%20Helper%20Yusa" class="btn btn-secondary">
-Yusa
-</a>
-
-<br><br>
-
-<a href="https://wa.me/6285393609589?text=Halo,%20saya%20membutuhkan%20Helper%20Yames" class="btn btn-secondary">
-Yames
-</a>
-
-<br><br>
-
-<a href="https://wa.me/6282217571302?text=Halo,%20saya%20membutuhkan%20Helper%20Devri" class="btn btn-secondary">
-Devri
-</a>
-
-<br><br>
-
-<a href="https://wa.me/6282277661195?text=Halo,%20saya%20membutuhkan%20Helper%20Apri" class="btn btn-secondary">
-Apri
-</a>
-
-<br><br>
-
-<a href="https://wa.me/6285348602574?text=Halo,%20saya%20membutuhkan%20Helper%20David" class="btn btn-secondary">
-David
-</a>
-
-<br><br>
-
-<a href="https://wa.me/6282155255627?text=Halo,%20saya%20membutuhkan%20Helper%20Diqin" class="btn btn-secondary">
-Diqin
-</a>
-
-<br><br>
-
-<a href="https://wa.me/6281348452621?text=Halo,%20saya%20membutuhkan%20Helper%20Razi" class="btn btn-secondary">
-Razi
-</a>
-
-<br><br>
-
-<a href="https://wa.me/6281225162644?text=Halo,%20saya%20membutuhkan%20Helper%20Harsa" class="btn btn-secondary">
-Harsa
-</a>
-
-<br><br>
-
-<a href="https://wa.me/6281912608823?text=Halo,%20saya%20membutuhkan%20Helper%20Yusuf" class="btn btn-secondary">
-Yusuf
-</a>
-
-<br><br>
-
-<a href="https://wa.me/62895363247708?text=Halo,%20saya%20membutuhkan%20Helper%20Anto" class="btn btn-secondary">
-Anto
-</a>
-
-<br><br>
-
-<a href="https://wa.me/6285751951397?text=Halo,%20saya%20membutuhkan%20Helper%20Yoga" class="btn btn-secondary">
-Yoga
-</a>
-
-<br><br>
-
-<a href="https://wa.me/6285311111233?text=Halo,%20saya%20membutuhkan%20Helper%20Sapri" class="btn btn-secondary">
-Sapri
-</a>
-
 </div>
-
-</details>
-
 </div>
-
 </div>
-
 </div>
-
 </div>
-
 </section>
-
-<!-- CTA -->
 
 <section>
-
 <div class="container">
-
 <div class="cta">
-
-<h2>
-Punya Alat atau Jasa Proyek?
-</h2>
-
-<p>
-Gabung menjadi mitra PROYEKin
-dan temukan pelanggan baru lebih mudah.
-</p>
-
-<a href="#" class="btn btn-secondary">
-Gabung Sekarang
-</a>
-
+<h2>Punya Alat atau Jasa Proyek?</h2>
+<p>Gabung menjadi mitra PROYEKin dan temukan pelanggan baru lebih mudah.</p>
+<a href="#mitra" class="btn btn-secondary">Gabung Sekarang</a>
 </div>
-
 </div>
-
 </section>
 
-<!-- MITRA FORM -->
-
-<section class="mitra-section">
-
+<section class="mitra-section" id="mitra">
 <div class="container">
-
 <div class="mitra-header">
-
-<h2>
-Gabung Sebagai Mitra PROYEKin
-</h2>
-
-<p>
-Daftarkan alat, operator, mekanik,
-atau jasa proyek Anda sekarang.
-</p>
-
+<h2>Gabung Sebagai Mitra PROYEKin</h2>
+<p>Daftarkan alat, operator, mekanik, helper, atau jasa proyek Anda sekarang.</p>
 </div>
 
 <form class="mitra-form">
-
 <div class="form-group">
 <label>Nama / Perusahaan</label>
 <input type="text" placeholder="CV Banua Jaya">
 </div>
-
 <div class="form-group">
 <label>Nomor WhatsApp</label>
 <input type="text" placeholder="08xxxxxxxxxx">
 </div>
-
 <div class="form-group">
 <label>Lokasi</label>
 <input type="text" placeholder="Banjarbaru">
 </div>
-
 <div class="form-group">
-
 <label>Jenis Mitra</label>
-
 <select>
 <option>Pilih Jenis Mitra</option>
 <option>Alat Berat</option>
 <option>Operator</option>
 <option>Mekanik</option>
-<option>Tukang</option>
+<option>Helper</option>
 <option>Supplier Material</option>
 </select>
-
 </div>
-
 <div class="form-group">
-
 <label>Deskripsi Jasa</label>
-
-<textarea rows="5"
-placeholder="Ceritakan layanan Anda">
-</textarea>
-
+<textarea rows="5" placeholder="Ceritakan layanan Anda"></textarea>
 </div>
-
 <div class="form-group">
-
 <label>Pengalaman Kerja (Opsional)</label>
-
-<textarea rows="4"
-placeholder="Contoh: biasa mengerjakan proyek jalan atau tambang">
-</textarea>
-
+<textarea rows="4" placeholder="Contoh: biasa mengerjakan proyek jalan atau jembatan"></textarea>
 </div>
-
 <div class="form-group checkbox-item">
-
 <input type="checkbox" id="showExperience">
-
-<label for="showExperience">
-Tampilkan lama pengalaman
-</label>
-
+<label for="showExperience">Tampilkan lama pengalaman</label>
 </div>
-
 <div class="form-group experience-year" id="experienceField">
-
 <label>Lama Pengalaman</label>
-
 <select>
 <option>Pilih Lama Pengalaman</option>
 <option>Kurang dari 1 tahun</option>
@@ -1069,87 +792,138 @@ Tampilkan lama pengalaman
 <option>5 - 10 tahun</option>
 <option>Lebih dari 10 tahun</option>
 </select>
-
 </div>
-
 <div class="form-group">
-
 <label>Upload Foto</label>
-
 <input type="file">
-
 </div>
-
-<button type="submit" class="submit-btn">
-Gabung Sebagai Mitra
-</button>
-
+<button type="submit" class="submit-btn">Gabung Sebagai Mitra</button>
 </form>
-
 </div>
-
 </section>
 
-<!-- FOOTER -->
-
 <footer>
-
 <div class="container">
-
 <div class="footer-grid">
-
 <div>
-
 <h3>PROYEKin</h3>
-
-<p>
-Platform kebutuhan proyek dan jasa lapangan
-yang mempertemukan penyedia jasa dan pencari jasa.
-</p>
-
+<p>Platform kebutuhan proyek dan jasa lapangan yang mempertemukan penyedia jasa dan pencari jasa.</p>
 </div>
-
 <div>
-
 <h3>Menu</h3>
-
 <p><a href="#">Beranda</a></p>
-<p><a href="#">Cari Jasa</a></p>
-<p><a href="#">Gabung Mitra</a></p>
-
+<p><a href="#vendor">Cari Jasa</a></p>
+<p><a href="#mitra">Gabung Mitra</a></p>
 </div>
-
 <div>
-
 <h3>Kontak</h3>
-
 <p>WhatsApp: 08xxxxxxxxxx</p>
 <p>Email: info@proyekin.id</p>
-
 </div>
-
 </div>
-
 </div>
-
 </footer>
 
 <script>
+const adminPhone = '6285311111233';
 
 const checkbox = document.getElementById('showExperience');
 const experienceField = document.getElementById('experienceField');
 
 checkbox.addEventListener('change', function(){
-
-  if(this.checked){
-    experienceField.style.display = 'block';
-  }else{
-    experienceField.style.display = 'none';
-  }
-
+  experienceField.style.display = this.checked ? 'block' : 'none';
 });
 
-</script>
+const crewRequest = document.getElementById('crewRequest');
+const sendCrewRequest = document.getElementById('sendCrewRequest');
+const jobLocation = document.getElementById('jobLocation');
+const crewError = document.getElementById('crewError');
 
+function getSelectedCrew(){
+  const checkedInputs = crewRequest.querySelectorAll('input[type="checkbox"]:checked');
+
+  return Array.from(checkedInputs).map(function(input){
+    return {
+      role: input.dataset.role,
+      name: input.dataset.name,
+      phone: input.dataset.phone
+    };
+  });
+}
+
+function groupCrewByRole(selectedCrew){
+  return selectedCrew.reduce(function(groups, crew){
+    if(!groups[crew.role]){
+      groups[crew.role] = [];
+    }
+
+    const alreadyAdded = groups[crew.role].some(function(item){
+      return item.name === crew.name;
+    });
+
+    if(!alreadyAdded){
+      groups[crew.role].push(crew);
+    }
+
+    return groups;
+  }, {});
+}
+
+function buildWhatsAppMessage(selectedCrew, location){
+  const groupedCrew = groupCrewByRole(selectedCrew);
+  const roleOrder = ['Operator', 'Helper', 'Mekanik'];
+  const messageLines = [
+    'Halo, izin bertanya apakah saat ini tersedia untuk pekerjaan/proyek?',
+    '',
+    'Kebutuhan saya:',
+    ''
+  ];
+
+  roleOrder.forEach(function(role){
+    if(!groupedCrew[role]){
+      return;
+    }
+
+    messageLines.push('- ' + role + ':');
+    groupedCrew[role].forEach(function(crew){
+      messageLines.push('* ' + crew.name);
+    });
+    messageLines.push('');
+  });
+
+  messageLines.push('Lokasi pekerjaan:');
+  messageLines.push(location);
+  messageLines.push('');
+  messageLines.push('Mohon informasi terkait kesiapan dan ketersediaannya. Terima kasih.');
+
+  return messageLines.join('\n');
+}
+
+function getTargetPhone(selectedCrew){
+  if(selectedCrew.length === 1){
+    return selectedCrew[0].phone;
+  }
+
+  return adminPhone;
+}
+
+sendCrewRequest.addEventListener('click', function(){
+  const selectedCrew = getSelectedCrew();
+  const location = jobLocation.value.trim();
+
+  if(selectedCrew.length === 0 || location === ''){
+    crewError.style.display = 'block';
+    return;
+  }
+
+  crewError.style.display = 'none';
+
+  const targetPhone = getTargetPhone(selectedCrew);
+  const message = buildWhatsAppMessage(selectedCrew, location);
+  const whatsappUrl = 'https://wa.me/' + targetPhone + '?text=' + encodeURIComponent(message);
+
+  window.open(whatsappUrl, '_blank');
+});
+</script>
 </body>
-	</html>
+</html>
